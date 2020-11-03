@@ -15,6 +15,7 @@ export class App {
 
         // binding
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleAdd(title) {
@@ -36,17 +37,23 @@ export class App {
         this.input.value = "";
     }
 
-    mount() {
-        this.todoListModel.onChange(() => {
-            const todoItems = this.todoListModel.getTodoItems();
-            const todoListElement = this.todoListView.createElement(todoItems, {
-                onUpdateTodo: ({ id, completed }) => this.handleUpdate({ id, completed}),
-                onDeleteTodo: ({ id }) => this.handleDelete({ id }),
-            });
-            render(todoListElement, this.container);
-            this.todoItemCount.textContent = `todoアイテム数: ${this.todoListModel.getTotalCount()}`;
+    handleChange() {
+        const todoItems = this.todoListModel.getTodoItems();
+        const todoListElement = this.todoListView.createElement(todoItems, {
+            onUpdateTodo: ({ id, completed }) => this.handleUpdate({ id, completed }),
+            onDeleteTodo: ({ id }) => this.handleDelete({ id }),
         });
+        render(todoListElement, this.container);
+        this.todoItemCount.textContent = `todoアイテム数: ${this.todoListModel.getTotalCount()}`;
+    }
 
+    mount() {
+        this.todoListModel.onChange(this.handleChange);
         this.form.addEventListener("submit", this.handleSubmit);
+    }
+
+    unmount() {
+        this.todoListModel.offChange(this.handleChange);
+        this.form.removeEventListener("submit", this.handleSubmit);
     }
 }
