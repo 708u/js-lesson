@@ -4,7 +4,11 @@ import { TodoListView } from "./view/TodoListView.js";
 import { render } from "./view/html-util.js";
 
 export class App {
-    constructor() {
+    constructor({ form: formElement, input: inputElement, container: containerElement, todoItemCount: todoItemCountElement }) {
+        this.form = formElement;
+        this.input = inputElement;
+        this.container = containerElement;
+        this.todoItemCount = todoItemCountElement;
         this.todoListModel = new TodoListModel();
         this.todoListView = new TodoListView();
     }
@@ -22,25 +26,20 @@ export class App {
     }
 
     mount() {
-        const formElement = document.querySelector("#js-form");
-        const inputElement = document.querySelector("#js-form-input");
-        const containerElement = document.querySelector("#js-todo-list");
-        const todoItemCountElement = document.querySelector("#js-todo-count");
-
         this.todoListModel.onChange(() => {
             const todoItems = this.todoListModel.getTodoItems();
             const todoListElement = this.todoListView.createElement(todoItems, {
                 onUpdateTodo: ({ id, completed }) => this.handleUpdate({ id, completed}),
                 onDeleteTodo: ({ id }) => this.handleDelete({ id }),
             });
-            render(todoListElement, containerElement);
-            todoItemCountElement.textContent = `todoアイテム数: ${this.todoListModel.getTotalCount()}`;
+            render(todoListElement, this.container);
+            this.todoItemCount.textContent = `todoアイテム数: ${this.todoListModel.getTotalCount()}`;
         });
 
-        formElement.addEventListener("submit", (event) => {
+        this.form.addEventListener("submit", (event) => {
             event.preventDefault();
-            this.handleAdd(inputElement.value);
-            inputElement.value = "";
+            this.handleAdd(this.input.value);
+            this.input.value = "";
         })
     }
 }
