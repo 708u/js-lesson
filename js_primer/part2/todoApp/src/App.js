@@ -5,12 +5,16 @@ import { render } from "./view/html-util.js";
 
 export class App {
     constructor({ form: formElement, input: inputElement, container: containerElement, todoItemCount: todoItemCountElement }) {
+        this.todoListModel = new TodoListModel();
+        this.todoListView = new TodoListView();
+
         this.form = formElement;
         this.input = inputElement;
         this.container = containerElement;
         this.todoItemCount = todoItemCountElement;
-        this.todoListModel = new TodoListModel();
-        this.todoListView = new TodoListView();
+
+        // binding
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleAdd(title) {
@@ -25,6 +29,13 @@ export class App {
         this.todoListModel.deleteTodo({ id });
     }
 
+    handleSubmit(event) {
+        event.preventDefault();
+        const inputElement = this.input;
+        this.handleAdd(inputElement.value);
+        this.input.value = "";
+    }
+
     mount() {
         this.todoListModel.onChange(() => {
             const todoItems = this.todoListModel.getTodoItems();
@@ -36,10 +47,6 @@ export class App {
             this.todoItemCount.textContent = `todoアイテム数: ${this.todoListModel.getTotalCount()}`;
         });
 
-        this.form.addEventListener("submit", (event) => {
-            event.preventDefault();
-            this.handleAdd(this.input.value);
-            this.input.value = "";
-        })
+        this.form.addEventListener("submit", this.handleSubmit);
     }
 }
