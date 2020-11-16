@@ -4,9 +4,9 @@ import './index.css';
 
 function Square({ onClick, value }) {
   return (
-      <button className="square" onClick={ onClick }>
-        {value }
-      </button>
+    <button className="square" onClick={ onClick }>
+      { value }
+    </button>
   );
 }
 
