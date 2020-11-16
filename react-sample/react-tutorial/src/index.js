@@ -4,41 +4,29 @@ import './index.css';
 
 function Square({ onClick, value }) {
   return (
-      <button
-        className="square"
-        onClick={ onClick }
-      >
+      <button className="square" onClick={ onClick }>
         {value }
       </button>
   );
 }
 
 const Board = ({ squares, onClick }) => {
-  const renderSquare = (i) => {
-    return (
-      <Square
-        value={squares[i]}
-        onClick={() => onClick(i)}
-      />
-    );
-  }
-
   return (
     <div>
       <div className="board-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
+        <Square value={squares[0]} onClick={() => onClick(0)}/>
+        <Square value={squares[1]} onClick={() => onClick(1)}/>
+        <Square value={squares[2]} onClick={() => onClick(2)}/>
       </div>
       <div className="board-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
+        <Square value={squares[3]} onClick={() => onClick(3)}/>
+        <Square value={squares[4]} onClick={() => onClick(4)}/>
+        <Square value={squares[5]} onClick={() => onClick(5)}/>
       </div>
       <div className="board-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
+        <Square value={squares[6]} onClick={() => onClick(6)}/>
+        <Square value={squares[7]} onClick={() => onClick(7)}/>
+        <Square value={squares[8]} onClick={() => onClick(8)}/>
       </div>
     </div>
   );
