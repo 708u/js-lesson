@@ -32,6 +32,21 @@ const Board = ({ squares, onClick }) => {
   );
 }
 
+const History = (props) => {
+  const { history, jumpTo } = props;
+  return (
+    <ol>
+      {history.map((_, move) => {
+        return <li key={move}>
+          <button onClick={jumpTo(move)}>
+            {move ? 'Go to move #' + move : 'Go to game start'}
+          </button>
+        </li>
+      })}
+    </ol>
+  )
+}
+
 class Game extends React.Component {
   constructor(props) {
     super(props);
@@ -112,6 +127,7 @@ class Game extends React.Component {
         <div className="game-info">
           <div>{this.getStatus()}</div>
         <ol>{moves}</ol>
+        {/* <History history={history} jumpTo={() => this.jumpTo}></History> */}
         </div>
       </div>
     );
