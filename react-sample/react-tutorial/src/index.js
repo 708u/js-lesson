@@ -116,7 +116,7 @@ const Game = () => {
       <div className="game-info">
         <div>{getStatus()}</div>
       <ol>{moves}</ol>
-      {/* <History history={history} jumpTo={() => this.jumpTo}></History> */}
+      {/* <History history={history} jumpTo={jumpTo}></History> */}
       </div>
     </div>
   );
