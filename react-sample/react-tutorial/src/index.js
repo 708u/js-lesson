@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function Square({ onClick, value }) {
+const Square = (props) => {
+  const { onClick, value } = props;
   return (
     <button className="square" onClick={ onClick }>
       { value }
@@ -10,7 +11,8 @@ function Square({ onClick, value }) {
   );
 }
 
-const Board = ({ squares, onClick }) => {
+const Board = (props) => {
+  const { squares, onClick } = props;
   return (
     <div>
       <div className="board-row">
@@ -32,21 +34,6 @@ const Board = ({ squares, onClick }) => {
   );
 }
 
-const History = (props) => {
-  const { history, jumpTo } = props;
-  return (
-    <ol>
-      {history.map((_, move) => {
-        return <li key={move}>
-          <button onClick={jumpTo(move)}>
-            {move ? 'Go to move #' + move : 'Go to game start'}
-          </button>
-        </li>
-      })}
-    </ol>
-  )
-}
-
 const Game = () => {
   const [history, setHistory] = useState([{
     squares: Array(9).fill(null),
@@ -58,11 +45,11 @@ const Game = () => {
   const handleClick = (i) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const historyCopy = history.slice(0, stepNumber + 1);
     // 盤面全体を保持するobject取得
     // { squares: Array(9)}
-    const current = history[history.length - 1];
-    // 現在の盤面を取得
+    const current = historyCopy[historyCopy.length - 1];
+    // 現在の盤面を取得しつつ、インスタンスを新規に作成
     // ['', 'X', ...];
     const squares = current.squares.slice();
 
@@ -71,19 +58,17 @@ const Game = () => {
       return;
     }
     // 盤面にマークをセット
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = xIsNext ? 'X' : 'O';
 
     // state更新
-    this.setState({
-      history: history.concat([{
+    setHistory(historyCopy.concat([{
         squares: squares,
-      }]),
-      stepNumber: history.length,
-      xIsNext: !this.state.xIsNext,
-    });
+      }]));
+    setStepNumber(historyCopy.length);
+    setXIsNext(! xIsNext);
   };
 
-  const jumpTo = (step) => {
+  const jumpTo = (step) => () => {
     setStepNumber(step);
     setXIsNext((step % 2) === 0);
   }
@@ -94,29 +79,25 @@ const Game = () => {
     return winner ? 'Winner: ' + winner : 'Next player: ' + (xIsNext ? 'X' : 'O');
   }
 
-  const moves = history.map((_, move) => {
-    const desc = move ?
-      'Go to move #' + move :
-      'Go to game start';
-    return (
-      <li key={move}>
-        <button onClick={() => this.jumpTo(move)}>{desc}</button>
-      </li>
-    )
-  })
-
   return (
     <div className="game">
       <div className="game-board">
         <Board
           squares={current.squares}
-          onClick={(i) => this.handleClick(i)}
+          onClick={(i) => handleClick(i)}
         />
       </div>
       <div className="game-info">
         <div>{getStatus()}</div>
-      <ol>{moves}</ol>
-      {/* <History history={history} jumpTo={jumpTo}></History> */}
+        <ol>
+          {history.map((_, move) => {
+            return <li key={move}>
+              <button onClick={jumpTo(move)}>
+                {move ? 'Go to move #' + move : 'Go to game start'}
+              </button>
+            </li>
+          })}
+        </ol>
       </div>
     </div>
   );
