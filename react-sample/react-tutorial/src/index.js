@@ -45,14 +45,24 @@ class Game extends React.Component {
   }
 
   handleClick(i) {
+    // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    // 盤面全体を保持するobject取得
+    // { squares: Array(9)}
     const current = history[history.length - 1];
+    // 現在の盤面を取得
+    // ['', 'X', ...];
     const squares = current.squares.slice();
+
+    // クリックした点で勝利した人がいたらゲームを早期終了
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
+    // 盤面にマークをセット
     squares[i] = this.state.xIsNext ? 'X' : 'O';
+
+    // state更新
     this.setState({
       history: history.concat([{
         squares: squares,
@@ -70,6 +80,7 @@ class Game extends React.Component {
   }
 
   getStatus() {
+    // TODO: change useState
     const current = this.state.history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
     return winner ? 'Winner: ' + winner : 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
@@ -119,12 +130,14 @@ function calculateWinner(squares) {
     [2, 4, 6],
   ];
   for (let i = 0; i < lines.length; i++) {
+    // 0, 1, 2
     const [a, b, c] = lines[i];
+    // X, null, X
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return squares[a]; // 勝利したマークを返却する
     }
   }
-  return null;
+  return null; // 勝負が終わってなければnull
 }
 
 // ========================================
