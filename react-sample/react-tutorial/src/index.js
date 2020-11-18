@@ -42,7 +42,7 @@ const Game = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const current = history[stepNumber];
 
-  const handleClick = (i) => {
+  const handleClick = ({ history, setHistory, setStepNumber, setXIsNext }) => (i) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
     const historyCopy = history.slice(0, stepNumber + 1);
@@ -84,7 +84,7 @@ const Game = () => {
       <div className="game-board">
         <Board
           squares={current.squares}
-          onClick={(i) => handleClick(i)}
+          onClick={handleClick({ history, setHistory, setStepNumber, setXIsNext })}
         />
       </div>
       <div className="game-info">
