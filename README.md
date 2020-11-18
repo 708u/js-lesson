@@ -1,2 +1,2 @@
 # js-lesson
-Study JavaScript
+Study JavaScript && React && TypeScript
