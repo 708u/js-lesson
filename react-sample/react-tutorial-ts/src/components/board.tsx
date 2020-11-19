@@ -1,7 +1,15 @@
-import Square from '../components/square';
-import '../index.css';
+import React from 'react';
+import Square, { square } from 'components/square';
+import 'index.css';
 
-const Board = (props) => {
+export type board = Array<square>
+
+type props = {
+  squares: board,
+  onClick: (n: number) => void
+}
+
+const Board = (props: props) => {
   const { squares, onClick } = props;
   return (
     <div>
