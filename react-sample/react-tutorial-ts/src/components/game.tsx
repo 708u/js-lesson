@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
-import Board from './board';
-import '../index.css';
+import Board, { board } from 'components/board';
+import { square } from 'components/square';
+import 'index.css';
 
 const Game = () => {
-  const [history, setHistory] = useState([{
+  type squares = {
+    squares: board
+  };
+
+  type history = Array<squares>;
+
+  const [history, setHistory] = useState<history>([{
     squares: Array(9).fill(null),
   }]);
   const [stepNumber, setStepNumber] = useState(0);
@@ -21,7 +28,7 @@ const Game = () => {
     [2, 4, 6],
   ];
 
-  const calculateWinner = (squares: any) => {
+  const calculateWinner = (squares: board): square => {
     for (let i = 0; i < lines.length; i++) {
       // 0, 1, 2
       const [a, b, c] = lines[i];
@@ -33,7 +40,17 @@ const Game = () => {
     return null; // 勝負が終わってなければnull
   };
 
-  const handleClick = ({ history, setHistory, setStepNumber, setXIsNext }) => (i: number) => {
+  const handleClick = ({
+    history,
+    setHistory,
+    setStepNumber,
+    setXIsNext
+  }: {
+      history: Array<squares>
+      setHistory: any,
+      setStepNumber: any,
+      setXIsNext: any
+    }) => (i: number) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
     const historyCopy = history.slice(0, stepNumber + 1);
