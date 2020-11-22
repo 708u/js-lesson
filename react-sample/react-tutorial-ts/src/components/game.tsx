@@ -53,10 +53,10 @@ const Game = () => {
     }) => (i: number) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
-    const historyCopy = history.slice(0, stepNumber + 1);
+    const newHistory = history.slice(0, stepNumber + 1);
     // 盤面全体を保持するobject取得
     // { squares: Array(9)}
-    const current = historyCopy[historyCopy.length - 1];
+    const current = newHistory[newHistory.length - 1];
     // 現在の盤面を取得しつつ、インスタンスを新規に作成
     // ['', 'X', ...];
     const squares = current.squares.slice();
@@ -69,10 +69,10 @@ const Game = () => {
     squares[i] = xIsNext ? 'X' : 'O';
 
     // state更新
-    setHistory(historyCopy.concat([{
+    setHistory(newHistory.concat([{
         squares: squares,
       }]));
-    setStepNumber(historyCopy.length);
+    setStepNumber(newHistory.length);
     setXIsNext(! xIsNext);
   };
 
