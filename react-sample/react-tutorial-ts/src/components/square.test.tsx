@@ -1,5 +1,10 @@
-import Square from './square';
+import React from 'react';
+import Square, { SquareBtn } from './square';
 import renderer from 'react-test-renderer';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import Enzyme, { shallow } from 'enzyme';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('square test', () => {
   it('should render as expected components', () => {
@@ -8,6 +13,11 @@ describe('square test', () => {
     )
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  })
+
+  it('has button', () => {
+    const buttonWrapper = shallow(<Square value={'X'} onClick={() => {}}/>);
+    expect(buttonWrapper.find(SquareBtn)).toHaveLength(1);
   })
 })
 

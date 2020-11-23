@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export type mark = 'O' | 'X' | null;
 
-const SquareBtn = styled.button`
+export const SquareBtn = styled.button`
   background: #fff;
   border: 1px solid #999;
   float: left;
