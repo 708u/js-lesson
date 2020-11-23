@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Board, { board } from 'components/board';
 import { square } from 'components/square';
 import 'index.css';
+import styled from 'styled-components';
 
 const Game = () => {
   type squares = {
@@ -9,6 +10,16 @@ const Game = () => {
   };
 
   type history = Array<squares>;
+
+  const View = styled.div`
+    display: flex;
+    font: 14px "Century Gothic", Futura, sans-serif;
+    margin: 20px;
+  `
+
+  const HistoryList = styled.ol`
+    padding-left: 30px;
+  `
 
   const [history, setHistory] = useState<history>([{
     squares: Array(9).fill(null),
@@ -88,7 +99,7 @@ const Game = () => {
   }
 
   return (
-    <div className="game">
+    <View>
       <div className="game-board">
         <Board
           squares={current.squares}
@@ -97,7 +108,7 @@ const Game = () => {
       </div>
       <div className="game-info">
         <div>{getStatus()}</div>
-        <ol>
+        <HistoryList>
           {history.map((_, move) => {
             return <li key={move}>
               <button onClick={jumpTo(move)}>
@@ -105,9 +116,9 @@ const Game = () => {
               </button>
             </li>
           })}
-        </ol>
+        </HistoryList>
       </div>
-    </div>
+    </View>
   );
 }
 
