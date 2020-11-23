@@ -12,9 +12,14 @@ const Game = () => {
   type history = Array<squares>;
 
   const View = styled.div`
+    flex-direction: row;
     display: flex;
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 20px;
+  `
+
+  const GameInfo = styled.div`
+    margin-left: 20px;
   `
 
   const HistoryList = styled.ol`
@@ -93,20 +98,17 @@ const Game = () => {
   }
 
   const getStatus = () => {
-    // TODO: change useState
     const winner = calculateWinner(current.squares);
     return winner ? 'Winner: ' + winner : 'Next player: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
     <View>
-      <div className="game-board">
-        <Board
-          squares={current.squares}
-          onClick={handleClick({ history, setHistory, setStepNumber, setXIsNext })}
-        />
-      </div>
-      <div className="game-info">
+      <Board
+        squares={current.squares}
+        onClick={handleClick({ history, setHistory, setStepNumber, setXIsNext })}
+      />
+      <GameInfo>
         <div>{getStatus()}</div>
         <HistoryList>
           {history.map((_, move) => {
@@ -117,7 +119,7 @@ const Game = () => {
             </li>
           })}
         </HistoryList>
-      </div>
+      </GameInfo>
     </View>
   );
 }
