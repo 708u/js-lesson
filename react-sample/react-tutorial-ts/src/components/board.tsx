@@ -1,9 +1,9 @@
 import React from 'react';
-import Square, { square } from 'components/square';
+import Square, { mark } from 'components/square';
 import styled from 'styled-components';
 import 'index.css';
 
-export type board = Array<square>
+export type board = Array<mark>
 
 type props = {
   squares: board,

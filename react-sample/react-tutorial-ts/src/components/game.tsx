@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Board, { board } from 'components/board';
-import { square } from 'components/square';
+import { mark } from 'components/square';
 import History, { history, squares } from 'components/history';
 import styled from 'styled-components';
 import 'index.css';
@@ -24,7 +24,7 @@ const Game = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const current = history[stepNumber];
 
-  const lines = [
+  const gameIsOverPatterns = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -35,10 +35,10 @@ const Game = () => {
     [2, 4, 6],
   ] as const;
 
-  const calculateWinner = (squares: board): square => {
-    for (let i = 0; i < lines.length; i++) {
+  const calculateWinner = (squares: board): mark => {
+    for (let i = 0; i < gameIsOverPatterns.length; i++) {
       // 0, 1, 2
-      const [a, b, c] = lines[i];
+      const [a, b, c] = gameIsOverPatterns[i];
       // X, null, X
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a]; // 勝利したマークを返却する
@@ -100,7 +100,7 @@ const Game = () => {
         onClick={handleClick({ history, setHistory, setStepNumber, setXIsNext })}
       />
       <GameInfo>
-        <div>{getStatus()}</div>
+        <GameInfo>{getStatus()}</GameInfo>
         <History history={history} onClick={jumpTo}/>
       </GameInfo>
     </View>

@@ -1,11 +1,11 @@
 import React, { FC, MouseEvent } from 'react';
 import styled from 'styled-components';
 
-export type square = 'O' | 'X' | null;
+export type mark = 'O' | 'X' | null;
 
 type Props = {
   onClick: (e: MouseEvent) => void,
-  value: square
+  value: mark
 }
 
 const SquareBtn = styled.button`
