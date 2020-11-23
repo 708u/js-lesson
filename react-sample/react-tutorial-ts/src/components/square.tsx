@@ -3,11 +3,6 @@ import styled from 'styled-components';
 
 export type mark = 'O' | 'X' | null;
 
-type Props = {
-  onClick: (e: MouseEvent) => void,
-  value: mark
-}
-
 const SquareBtn = styled.button`
   background: #fff;
   border: 1px solid #999;
@@ -22,6 +17,11 @@ const SquareBtn = styled.button`
   text-align: center;
   width: 34px;
 `;
+
+type Props = {
+  onClick: (e: MouseEvent) => void,
+  value: mark
+}
 
 const Square: FC<Props> = (props) => {
   const { onClick, value } = props;

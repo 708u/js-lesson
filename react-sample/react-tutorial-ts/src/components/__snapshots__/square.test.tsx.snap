@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`square test should render as expected components 1`] = `
+<button
+  className="sc-bdfBwQ iZlURE"
+  onClick={[Function]}
+>
+  X
+</button>
+`;
