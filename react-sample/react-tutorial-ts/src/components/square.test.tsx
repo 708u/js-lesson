@@ -16,8 +16,8 @@ describe('square test', () => {
   })
 
   it('has button', () => {
-    const buttonWrapper = shallow(<Square value={'X'} onClick={() => {}}/>);
-    expect(buttonWrapper.find(SquareBtn)).toHaveLength(1);
+    const buttonWrapper = shallow(<Square value={'X'} onClick={() => {}}/>).find(SquareBtn);
+    expect(buttonWrapper).toHaveLength(1);
   })
 })
 
