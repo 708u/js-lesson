@@ -10,7 +10,8 @@ type props = {
   onClick: (n: number) => void
 }
 
-const BoardRaw = styled.div`
+const Board = (props: props) => {
+  const BoardRaw = styled.div`
   ::after {
     clear: both;
     content: "";
@@ -18,7 +19,6 @@ const BoardRaw = styled.div`
   }
 `
 
-const Board = (props: props) => {
   const { squares, onClick } = props;
   return (
     <div>

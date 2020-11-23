@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import Board, { board } from 'components/board';
 import { square } from 'components/square';
-import 'index.css';
+import History, { history, squares } from 'components/history';
 import styled from 'styled-components';
+import 'index.css';
 
 const Game = () => {
-  type squares = {
-    squares: board
-  };
-
-  type history = Array<squares>;
-
   const View = styled.div`
     flex-direction: row;
     display: flex;
@@ -20,10 +15,6 @@ const Game = () => {
 
   const GameInfo = styled.div`
     margin-left: 20px;
-  `
-
-  const HistoryList = styled.ol`
-    padding-left: 30px;
   `
 
   const [history, setHistory] = useState<history>([{
@@ -42,7 +33,7 @@ const Game = () => {
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6],
-  ];
+  ] as const;
 
   const calculateWinner = (squares: board): square => {
     for (let i = 0; i < lines.length; i++) {
@@ -110,15 +101,7 @@ const Game = () => {
       />
       <GameInfo>
         <div>{getStatus()}</div>
-        <HistoryList>
-          {history.map((_, move) => {
-            return <li key={move}>
-              <button onClick={jumpTo(move)}>
-                {move ? 'Go to move #' + move : 'Go to game start'}
-              </button>
-            </li>
-          })}
-        </HistoryList>
+        <History history={history} onClick={jumpTo}/>
       </GameInfo>
     </View>
   );
