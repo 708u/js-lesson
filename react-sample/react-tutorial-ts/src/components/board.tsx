@@ -20,23 +20,22 @@ const Board = (props: props) => {
 `
 
   const { squares, onClick } = props;
+
+  const boardNumbers = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+  ] as readonly number[][];
+
   return (
     <div>
-      <BoardRaw>
-        <Square value={squares[0]} onClick={() => onClick(0)}/>
-        <Square value={squares[1]} onClick={() => onClick(1)}/>
-        <Square value={squares[2]} onClick={() => onClick(2)}/>
-      </ BoardRaw>
-      <BoardRaw>
-        <Square value={squares[3]} onClick={() => onClick(3)}/>
-        <Square value={squares[4]} onClick={() => onClick(4)}/>
-        <Square value={squares[5]} onClick={() => onClick(5)}/>
-      </ BoardRaw>
-      <BoardRaw>
-        <Square value={squares[6]} onClick={() => onClick(6)}/>
-        <Square value={squares[7]} onClick={() => onClick(7)}/>
-        <Square value={squares[8]} onClick={() => onClick(8)}/>
-      </ BoardRaw>
+      {boardNumbers.map((row) => {
+        return <BoardRaw>
+          {row.map((index) => {
+            return <Square value={squares[index]} onClick={() => onClick(index)}/>
+          })}
+        </BoardRaw>
+      })}
     </div>
   );
 }
