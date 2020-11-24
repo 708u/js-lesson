@@ -3,7 +3,7 @@ import Square, { mark } from 'components/square';
 import styled from 'styled-components';
 import 'index.css';
 
-export type board = Array<mark>
+export type board = mark[];
 
 type props = {
   squares: board,

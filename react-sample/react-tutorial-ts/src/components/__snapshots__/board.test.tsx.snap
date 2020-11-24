@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing board components should be same as a previous snapshot. 1`] = `
+<div>
+  <div
+    className="sc-gsTCUz gHlRWK"
+  >
+    <button
+      className="sc-bdfBwQ iZlURE"
+      onClick={[Function]}
+    >
+      O
+    </button>
+    <button
+      className="sc-bdfBwQ iZlURE"
+      onClick={[Function]}
+    >
+      X
+    </button>
+    <button
+      className="sc-bdfBwQ iZlURE"
+      onClick={[Function]}
+    >
+      O
+    </button>
+  </div>
+  <div
+    className="sc-gsTCUz gHlRWK"
+  >
+    <button
+      className="sc-bdfBwQ iZlURE"
+      onClick={[Function]}
+    >
+      X
+    </button>
+    <button
+      className="sc-bdfBwQ iZlURE"
+      onClick={[Function]}
+    >
+      O
+    </button>
+    <button
+      className="sc-bdfBwQ iZlURE"
+      onClick={[Function]}
+    >
+      X
+    </button>
+  </div>
+  <div
+    className="sc-gsTCUz gHlRWK"
+  >
+    <button
+      className="sc-bdfBwQ iZlURE"
+      onClick={[Function]}
+    >
+      O
+    </button>
+    <button
+      className="sc-bdfBwQ iZlURE"
+      onClick={[Function]}
+    >
+      X
+    </button>
+    <button
+      className="sc-bdfBwQ iZlURE"
+      onClick={[Function]}
+    >
+      O
+    </button>
+  </div>
+</div>
+`;
