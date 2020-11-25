@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`history component test should be same as a previous snapshot. 1`] = `
+<ol
+  className="sc-bdfBwQ HyWRB"
+>
+  <li>
+    <button
+      onClick={[Function]}
+    >
+      Go to game start
+    </button>
+  </li>
+  <li>
+    <button
+      onClick={[Function]}
+    >
+      Go to move #1
+    </button>
+  </li>
+</ol>
+`;

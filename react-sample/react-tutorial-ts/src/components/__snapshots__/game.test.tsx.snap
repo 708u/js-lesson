@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`game component test should be same as a previous snapshot. 1`] = `
+<div
+  className="sc-gsTCUz dfFnio"
+>
+  <div>
+    <div
+      className="sc-hKgILt bvdiqT"
+    >
+      <button
+        className="sc-bdfBwQ iZlURE"
+        onClick={[Function]}
+      />
+      <button
+        className="sc-bdfBwQ iZlURE"
+        onClick={[Function]}
+      />
+      <button
+        className="sc-bdfBwQ iZlURE"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="sc-hKgILt bvdiqT"
+    >
+      <button
+        className="sc-bdfBwQ iZlURE"
+        onClick={[Function]}
+      />
+      <button
+        className="sc-bdfBwQ iZlURE"
+        onClick={[Function]}
+      />
+      <button
+        className="sc-bdfBwQ iZlURE"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="sc-hKgILt bvdiqT"
+    >
+      <button
+        className="sc-bdfBwQ iZlURE"
+        onClick={[Function]}
+      />
+      <button
+        className="sc-bdfBwQ iZlURE"
+        onClick={[Function]}
+      />
+      <button
+        className="sc-bdfBwQ iZlURE"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+  <div
+    className="sc-dlfnbm laRLSY"
+  >
+    <div
+      className="sc-dlfnbm laRLSY"
+    >
+      Next player: X
+    </div>
+    <ol
+      className="sc-iBPRYJ guPOEX"
+    >
+      <li>
+        <button
+          onClick={[Function]}
+        >
+          Go to game start
+        </button>
+      </li>
+    </ol>
+  </div>
+</div>
+`;

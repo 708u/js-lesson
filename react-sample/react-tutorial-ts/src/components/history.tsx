@@ -6,7 +6,7 @@ export type squares = {
   squares: board
 };
 
-export type history = Array<squares>;
+export type history = squares[];
 
 type Props = {
   history: history;
@@ -19,6 +19,7 @@ const History: FC<Props> = (props) => {
 `
 
   const { history, onClick } = props;
+
   return (
     <HistoryList>
       {history.map((_, move) => {
