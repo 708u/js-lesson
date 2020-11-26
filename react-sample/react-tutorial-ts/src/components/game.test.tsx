@@ -50,13 +50,15 @@ describe('game component test', () => {
 
   it('should win the X player', () => {
       render(<Game />);
+      const clicks = [
+        'btn-0',
+        'btn-7',
+        'btn-1',
+        'btn-8',
+        'btn-2'
+      ];
       // progress first turn.
-      fireEvent.click(screen.getByTestId('btn-0'));
-      fireEvent.click(screen.getByTestId('btn-7'));
-      fireEvent.click(screen.getByTestId('btn-1'));
-      fireEvent.click(screen.getByTestId('btn-8'));
-      // X user will win [x, x, x]
-      fireEvent.click(screen.getByTestId('btn-2'));
+      clicks.forEach((click) => fireEvent.click(screen.getByTestId(click)));
 
       // Winner comment was appeared.
       expect(screen.getByText('Winner: X')).toBeTruthy();
