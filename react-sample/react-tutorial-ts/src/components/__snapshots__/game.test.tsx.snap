@@ -10,30 +10,17 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
     >
       <button
         className="sc-bdfBwQ iZlURE"
+        id="btn-0"
         onClick={[Function]}
       />
       <button
         className="sc-bdfBwQ iZlURE"
+        id="btn-1"
         onClick={[Function]}
       />
       <button
         className="sc-bdfBwQ iZlURE"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="sc-hKgILt bvdiqT"
-    >
-      <button
-        className="sc-bdfBwQ iZlURE"
-        onClick={[Function]}
-      />
-      <button
-        className="sc-bdfBwQ iZlURE"
-        onClick={[Function]}
-      />
-      <button
-        className="sc-bdfBwQ iZlURE"
+        id="btn-2"
         onClick={[Function]}
       />
     </div>
@@ -42,14 +29,36 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
     >
       <button
         className="sc-bdfBwQ iZlURE"
+        id="btn-3"
         onClick={[Function]}
       />
       <button
         className="sc-bdfBwQ iZlURE"
+        id="btn-4"
         onClick={[Function]}
       />
       <button
         className="sc-bdfBwQ iZlURE"
+        id="btn-5"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="sc-hKgILt bvdiqT"
+    >
+      <button
+        className="sc-bdfBwQ iZlURE"
+        id="btn-6"
+        onClick={[Function]}
+      />
+      <button
+        className="sc-bdfBwQ iZlURE"
+        id="btn-7"
+        onClick={[Function]}
+      />
+      <button
+        className="sc-bdfBwQ iZlURE"
+        id="btn-8"
         onClick={[Function]}
       />
     </div>

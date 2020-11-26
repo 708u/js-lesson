@@ -3,6 +3,7 @@
 exports[`square test should render as expected components 1`] = `
 <button
   className="sc-bdfBwQ iZlURE"
+  id="btn-undefined"
   onClick={[Function]}
 >
   X

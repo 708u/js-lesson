@@ -20,13 +20,14 @@ export const SquareBtn = styled.button`
 
 type Props = {
   onClick: (e: MouseEvent) => void,
+  id: number,
   value: mark
 }
 
 const Square: FC<Props> = (props) => {
-  const { onClick, value } = props;
+  const { onClick, id, value } = props;
   return (
-    <SquareBtn onClick={ onClick }>
+    <SquareBtn id={`btn-${id}`} onClick={ onClick }>
       { value }
     </ SquareBtn>
   );
