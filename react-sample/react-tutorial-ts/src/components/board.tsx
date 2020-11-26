@@ -32,7 +32,7 @@ const Board = (props: props) => {
       {boardNumbers.map((row) => {
         return <BoardRaw>
           {row.map((index) => {
-            return <Square id={index} value={squares[index]} onClick={() => onClick(index)}/>
+            return <Square testId={index} value={squares[index]} onClick={() => onClick(index)}/>
           })}
         </BoardRaw>
       })}

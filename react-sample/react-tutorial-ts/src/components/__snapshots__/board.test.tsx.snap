@@ -7,21 +7,21 @@ exports[`testing board components should be same as a previous snapshot. 1`] = `
   >
     <button
       className="sc-bdfBwQ iZlURE"
-      id="btn-0"
+      data-testid="btn-0"
       onClick={[Function]}
     >
       O
     </button>
     <button
       className="sc-bdfBwQ iZlURE"
-      id="btn-1"
+      data-testid="btn-1"
       onClick={[Function]}
     >
       X
     </button>
     <button
       className="sc-bdfBwQ iZlURE"
-      id="btn-2"
+      data-testid="btn-2"
       onClick={[Function]}
     >
       O
@@ -32,21 +32,21 @@ exports[`testing board components should be same as a previous snapshot. 1`] = `
   >
     <button
       className="sc-bdfBwQ iZlURE"
-      id="btn-3"
+      data-testid="btn-3"
       onClick={[Function]}
     >
       X
     </button>
     <button
       className="sc-bdfBwQ iZlURE"
-      id="btn-4"
+      data-testid="btn-4"
       onClick={[Function]}
     >
       O
     </button>
     <button
       className="sc-bdfBwQ iZlURE"
-      id="btn-5"
+      data-testid="btn-5"
       onClick={[Function]}
     >
       X
@@ -57,21 +57,21 @@ exports[`testing board components should be same as a previous snapshot. 1`] = `
   >
     <button
       className="sc-bdfBwQ iZlURE"
-      id="btn-6"
+      data-testid="btn-6"
       onClick={[Function]}
     >
       O
     </button>
     <button
       className="sc-bdfBwQ iZlURE"
-      id="btn-7"
+      data-testid="btn-7"
       onClick={[Function]}
     >
       X
     </button>
     <button
       className="sc-bdfBwQ iZlURE"
-      id="btn-8"
+      data-testid="btn-8"
       onClick={[Function]}
     >
       O
