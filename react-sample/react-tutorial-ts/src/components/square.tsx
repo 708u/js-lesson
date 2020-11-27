@@ -20,8 +20,8 @@ export const SquareBtn = styled.button`
 
 type Props = {
   onClick: (e: MouseEvent) => void,
-  testId: number,
-  value: mark
+  value: mark,
+  testId?: number,
 }
 
 const Square: FC<Props> = (props) => {
