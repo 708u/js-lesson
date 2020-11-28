@@ -101,7 +101,7 @@ const Game = () => {
       />
       <GameInfo>
         <GameInfo>{getStatus()}</GameInfo>
-        <History history={history} onClick={jumpTo}/>
+        <History history={history} current={stepNumber} onClick={jumpTo}/>
       </GameInfo>
     </View>
   );

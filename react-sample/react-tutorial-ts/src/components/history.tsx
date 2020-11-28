@@ -10,6 +10,7 @@ export type history = squares[];
 
 type Props = {
   history: history;
+  current: number;
   onClick: (move: number) => () => void;
 };
 
@@ -18,13 +19,13 @@ const History: FC<Props> = (props) => {
   padding-left: 30px;
 `
 
-  const { history, onClick } = props;
+  const { history, onClick, current } = props;
 
   return (
     <HistoryList>
       {history.map((_, move) => {
         return <li key={move}>
-          <button onClick={onClick(move)}>
+          <button onClick={onClick(move)} className={current === move ? 'btn-bold' : ''}>
             {move ? 'Go to move #' + move : 'Go to game start'}
           </button>
         </li>

@@ -12,10 +12,21 @@ describe('history component test', () => {
     const component = renderer.create(
       <History
         history={history}
+        current={0}
         onClick={() =>  () => true}
       />
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component.toJSON()).toMatchSnapshot();
+
+    // determine if current has applied.
+    const secondComponent = renderer.create(
+      <History
+        history={history}
+        current={2}
+        onClick={() =>  () => true}
+      />
+    )
+
+    expect(secondComponent.toJSON()).toMatchSnapshot();
   });
 });

@@ -1,10 +1,13 @@
-
 .status {
   margin-bottom: 10px;
 }
 
 .square:focus {
   outline: none;
+}
+
+.btn-bold {
+  font-weight: 600;
 }
 
 .kbd-navigation .square:focus {
