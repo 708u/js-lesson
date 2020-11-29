@@ -2,7 +2,7 @@
 
 exports[`history component test should be same as a previous snapshot. 1`] = `
 <ol
-  className="sc-bdfBwQ HyWRB"
+  className="sc-bdfBwQ dDRKCN"
 >
   <li>
     <button
@@ -33,7 +33,7 @@ exports[`history component test should be same as a previous snapshot. 1`] = `
 
 exports[`history component test should be same as a previous snapshot. 2`] = `
 <ol
-  className="sc-gsTCUz hbUGvB"
+  className="sc-gsTCUz LxBZ"
 >
   <li>
     <button

@@ -3,7 +3,7 @@
 exports[`testing board components should be same as a previous snapshot. 1`] = `
 <div>
   <div
-    className="sc-gsTCUz gHlRWK"
+    className="sc-gsTCUz kQeNae"
   >
     <button
       className="sc-bdfBwQ iZlURE"
@@ -28,7 +28,7 @@ exports[`testing board components should be same as a previous snapshot. 1`] = `
     </button>
   </div>
   <div
-    className="sc-gsTCUz gHlRWK"
+    className="sc-gsTCUz kQeNae"
   >
     <button
       className="sc-bdfBwQ iZlURE"
@@ -53,7 +53,7 @@ exports[`testing board components should be same as a previous snapshot. 1`] = `
     </button>
   </div>
   <div
-    className="sc-gsTCUz gHlRWK"
+    className="sc-gsTCUz kQeNae"
   >
     <button
       className="sc-bdfBwQ iZlURE"

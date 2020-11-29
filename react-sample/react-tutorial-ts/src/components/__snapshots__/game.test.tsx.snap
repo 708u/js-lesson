@@ -2,11 +2,11 @@
 
 exports[`game component test should be same as a previous snapshot. 1`] = `
 <div
-  className="sc-gsTCUz dfFnio"
+  className="sc-gsTCUz cVJQdI"
 >
   <div>
     <div
-      className="sc-hKgILt bvdiqT"
+      className="sc-hKgILt fMCYZr"
     >
       <button
         className="sc-bdfBwQ iZlURE"
@@ -28,7 +28,7 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
       />
     </div>
     <div
-      className="sc-hKgILt bvdiqT"
+      className="sc-hKgILt fMCYZr"
     >
       <button
         className="sc-bdfBwQ iZlURE"
@@ -50,7 +50,7 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
       />
     </div>
     <div
-      className="sc-hKgILt bvdiqT"
+      className="sc-hKgILt fMCYZr"
     >
       <button
         className="sc-bdfBwQ iZlURE"
@@ -81,7 +81,7 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
       Next player: X
     </div>
     <ol
-      className="sc-iBPRYJ guPOEX"
+      className="sc-iBPRYJ cRaMVD"
     >
       <li>
         <button
