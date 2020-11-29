@@ -39,15 +39,15 @@ const Game: FC = () => {
 
   // FIXME: refactoring arg name;
   const calculateWinner = (bd: board): mark => {
-    for (let i = 0; i < gameIsOverPatterns.length; i++) {
-      // 0, 1, 2
-      const [a, b, c] = gameIsOverPatterns[i];
+    let winner: mark = null;
+    gameIsOverPatterns.forEach((v, idx) => {
+      const [a, b, c] = gameIsOverPatterns[idx];
       // X, null, X
       if (bd[a] && bd[a] === bd[b] && bd[a] === bd[c]) {
-        return bd[a]; // 勝利したマークを返却する
+        winner = bd[a]; // 勝利したマークを返却する
       }
-    }
-    return null; // 勝負が終わってなければnull
+    });
+    return winner;
   };
 
   const handleClick = (i: number) => (e: MouseEvent<HTMLButtonElement>) => {
