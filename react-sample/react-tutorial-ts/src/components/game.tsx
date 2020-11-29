@@ -1,7 +1,7 @@
 import React, { useState, MouseEvent, FC } from 'react';
 import Board, { board, LocationMap, LocationIndex } from 'components/board';
 import { mark } from 'components/square';
-import History, { History as HistoryType, squares } from 'components/history';
+import History, { History as HistoryType } from 'components/history';
 import styled from 'styled-components';
 import 'index.css';
 
