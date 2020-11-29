@@ -37,37 +37,36 @@ const Game: FC = () => {
     [2, 4, 6],
   ] as const;
 
-  const calculateWinner = (squares: board): mark => {
+  // FIXME: refactoring arg name;
+  const calculateWinner = (bd: board): mark => {
     for (let i = 0; i < gameIsOverPatterns.length; i++) {
       // 0, 1, 2
       const [a, b, c] = gameIsOverPatterns[i];
       // X, null, X
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a]; // 勝利したマークを返却する
+      if (bd[a] && bd[a] === bd[b] && bd[a] === bd[c]) {
+        return bd[a]; // 勝利したマークを返却する
       }
     }
     return null; // 勝負が終わってなければnull
   };
 
-  const handleClick = ({ history }: { history: Array<squares> }) => (i: number) => (
-    e: MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleClick = (i: number) => (e: MouseEvent<HTMLButtonElement>) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
     const newHistory = history.slice(0, stepNumber + 1);
     // 盤面全体を保持するobject取得
     // { squares: Array(9)}
-    const current = newHistory[newHistory.length - 1];
+    const newSquare = newHistory[newHistory.length - 1];
     // 現在の盤面を取得しつつ、インスタンスを新規に作成
     // ['', 'X', ...];
-    const squares = current.squares.slice();
+    const copiedSquares = newSquare.squares.slice();
 
     // クリックした点で勝利した人がいたらゲームを早期終了
-    if (calculateWinner(squares) || squares[i]) {
+    if (calculateWinner(copiedSquares) || copiedSquares[i]) {
       return;
     }
     // 盤面にマークをセット
-    squares[i] = xIsNext ? 'X' : 'O';
+    copiedSquares[i] = xIsNext ? 'X' : 'O';
 
     const position = e.currentTarget.name as LocationIndex;
 
@@ -75,7 +74,7 @@ const Game: FC = () => {
     setHistory(
       newHistory.concat([
         {
-          squares,
+          squares: copiedSquares,
           position: LocationMap.get(position),
         },
       ])
@@ -96,15 +95,7 @@ const Game: FC = () => {
 
   return (
     <View>
-      <Board
-        squares={current.squares}
-        onClick={handleClick({
-          history,
-          setHistory,
-          setStepNumber,
-          setXIsNext,
-        })}
-      />
+      <Board squares={current.squares} onClick={handleClick} />
       <GameInfo>
         <GameInfo>{getStatus()}</GameInfo>
         <History history={history} current={stepNumber} onClick={jumpTo} />
