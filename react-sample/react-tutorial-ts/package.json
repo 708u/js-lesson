@@ -21,6 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .tsx --ext .ts",
+    "format": "eslint . --fix --ext .tsx --ext .ts",
     "preinstall": "typesync || :"
   },
   "eslintConfig": {
