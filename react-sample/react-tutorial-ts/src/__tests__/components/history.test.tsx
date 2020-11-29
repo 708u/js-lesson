@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import History, { history } from 'components/history';
+import History, { History as HistoryType } from 'components/history';
 
 describe('history component test', () => {
   it('should be same as a previous snapshot.', () => {
-    const history: history = [
+    const history: HistoryType = [
       { squares: [null, null, null, null, null, null, null, null, null] },
       {
         squares: ['O', null, null, null, null, null, null, null, null],

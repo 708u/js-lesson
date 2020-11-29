@@ -1,5 +1,5 @@
 import renderer from 'react-test-renderer';
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import Board from 'components/board';
 import { mark } from 'components/square';
 
@@ -7,7 +7,8 @@ describe('testing board components', () => {
   it('should be same as a previous snapshot.', () => {
     const squares: mark[] = ['O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O'];
 
-    const onClick = (i: number): void => {};
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    const onClick = (i: number) => (e: MouseEvent<HTMLButtonElement>) => true;
     const component = renderer.create(
       <Board squares={squares} onClick={onClick} />
     );

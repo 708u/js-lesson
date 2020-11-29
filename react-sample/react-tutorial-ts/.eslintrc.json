@@ -42,10 +42,7 @@
         "extensions": [".jsx", ".tsx"]
       }
     ],
-    "import/no-extraneous-dependencies": ["error", {
-      "devDependencies": ["**/*.test.ts*"],
-      "optionalDependencies": false
-    }],
+    "import/no-unresolved": "off",
     "react/prop-types": "off",
     "quotes": ["warn", "single"],
     "prettier/prettier": ["error", { "singleQuote": true }],
