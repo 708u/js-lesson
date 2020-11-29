@@ -1,11 +1,11 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent, FC } from 'react';
 import Board, { board, LocationMap, LocationIndex } from 'components/board';
 import { mark } from 'components/square';
 import History, { History as HistoryType, squares } from 'components/history';
 import styled from 'styled-components';
 import 'index.css';
 
-const Game = () => {
+const Game: FC = () => {
   const View = styled.div`
     flex-direction: row;
     display: flex;
@@ -53,17 +53,9 @@ const Game = () => {
     return null; // 勝負が終わってなければnull
   };
 
-  const handleClick = ({
-    history,
-    setHistory,
-    setStepNumber,
-    setXIsNext,
-  }: {
-    history: Array<squares>;
-    setHistory: any;
-    setStepNumber: any;
-    setXIsNext: any;
-  }) => (i: number) => (e: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = ({ history }: { history: Array<squares> }) => (
+    i: number
+  ) => (e: MouseEvent<HTMLButtonElement>) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
     const newHistory = history.slice(0, stepNumber + 1);

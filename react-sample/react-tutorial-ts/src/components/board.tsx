@@ -1,11 +1,11 @@
-import React, { MouseEvent } from 'react';
+import React, { FC, MouseEvent } from 'react';
 import Square, { mark } from 'components/square';
 import styled from 'styled-components';
 import 'index.css';
 
 export type board = mark[];
 
-type props = {
+type Props = {
   squares: board;
   onClick: (n: number) => (e: MouseEvent<HTMLButtonElement>) => void;
 };
@@ -39,7 +39,7 @@ LocationIndex,
   ['3-3', { row: 3, col: 3 }],
 ]);
 
-const Board = (props: props) => {
+const Board: FC<Props> = (props: Props) => {
   const BoardRaw = styled.div`
     ::after {
       clear: both;
@@ -100,7 +100,7 @@ const Board = (props: props) => {
 
   return (
     <div>
-      {boardNumbers.map((row, index) => (
+      {boardNumbers.map((row) => (
         <BoardRaw>
           {row.map((value) => (
             <Square
