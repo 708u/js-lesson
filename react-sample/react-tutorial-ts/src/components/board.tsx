@@ -1,32 +1,24 @@
-import React, { MouseEvent } from 'react';
+import React, { FC, MouseEvent } from 'react';
+import { v4 as uuidV4 } from 'uuid';
 import Square, { mark } from 'components/square';
 import styled from 'styled-components';
 import 'index.css';
 
 export type board = mark[];
 
-type props = {
+type Props = {
   squares: board;
   onClick: (n: number) => (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
-type LocationIndex =
-  | '1-1'
-  | '1-2'
-  | '1-3'
-  | '2-1'
-  | '2-2'
-  | '2-3'
-  | '3-1'
-  | '3-2'
-  | '3-3';
+type LocationIndex = '1-1' | '1-2' | '1-3' | '2-1' | '2-2' | '2-3' | '3-1' | '3-2' | '3-3';
 
 const LocationMap: Map<
-LocationIndex,
-{
-  row: number;
-  col: number;
-}
+  LocationIndex,
+  {
+    row: number;
+    col: number;
+  }
 > = new Map([
   ['1-1', { row: 1, col: 1 }],
   ['1-2', { row: 1, col: 2 }],
@@ -39,7 +31,7 @@ LocationIndex,
   ['3-3', { row: 3, col: 3 }],
 ]);
 
-const Board = (props: props) => {
+const Board: FC<Props> = (props: Props) => {
   const BoardRaw = styled.div`
     ::after {
       clear: both;
@@ -100,10 +92,11 @@ const Board = (props: props) => {
 
   return (
     <div>
-      {boardNumbers.map((row, index) => (
-        <BoardRaw>
+      {boardNumbers.map((row) => (
+        <BoardRaw key={`board-row-${uuidV4()}`}>
           {row.map((value) => (
             <Square
+              key={`square-btn-${uuidV4()}`}
               name={value.location}
               testId={value.id}
               value={squares[value.id]}

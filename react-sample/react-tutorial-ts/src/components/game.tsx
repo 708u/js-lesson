@@ -1,11 +1,11 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent, FC } from 'react';
 import Board, { board, LocationMap, LocationIndex } from 'components/board';
 import { mark } from 'components/square';
-import History, { history, squares } from 'components/history';
+import History, { History as HistoryType } from 'components/history';
 import styled from 'styled-components';
 import 'index.css';
 
-const Game = () => {
+const Game: FC = () => {
   const View = styled.div`
     flex-direction: row;
     display: flex;
@@ -17,7 +17,7 @@ const Game = () => {
     margin-left: 20px;
   `;
 
-  const [history, setHistory] = useState<history>([
+  const [history, setHistory] = useState<HistoryType>([
     {
       squares: Array(9).fill(null),
     },
@@ -37,49 +37,36 @@ const Game = () => {
     [2, 4, 6],
   ] as const;
 
-  const calculateWinner = (squares: board): mark => {
-    for (let i = 0; i < gameIsOverPatterns.length; i++) {
-      // 0, 1, 2
-      const [a, b, c] = gameIsOverPatterns[i];
+  // FIXME: refactoring arg name;
+  const calculateWinner = (bd: board): mark => {
+    let winner: mark = null;
+    gameIsOverPatterns.forEach((v, idx) => {
+      const [a, b, c] = gameIsOverPatterns[idx];
       // X, null, X
-      if (
-        squares[a] &&
-        squares[a] === squares[b] &&
-        squares[a] === squares[c]
-      ) {
-        return squares[a]; // 勝利したマークを返却する
+      if (bd[a] && bd[a] === bd[b] && bd[a] === bd[c]) {
+        winner = bd[a]; // 勝利したマークを返却する
       }
-    }
-    return null; // 勝負が終わってなければnull
+    });
+    return winner;
   };
 
-  const handleClick = ({
-    history,
-    setHistory,
-    setStepNumber,
-    setXIsNext,
-  }: {
-    history: Array<squares>;
-    setHistory: any;
-    setStepNumber: any;
-    setXIsNext: any;
-  }) => (i: number) => (e: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (i: number) => (e: MouseEvent<HTMLButtonElement>) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
     const newHistory = history.slice(0, stepNumber + 1);
     // 盤面全体を保持するobject取得
     // { squares: Array(9)}
-    const current = newHistory[newHistory.length - 1];
+    const newSquare = newHistory[newHistory.length - 1];
     // 現在の盤面を取得しつつ、インスタンスを新規に作成
     // ['', 'X', ...];
-    const squares = current.squares.slice();
+    const copiedSquares = newSquare.squares.slice();
 
     // クリックした点で勝利した人がいたらゲームを早期終了
-    if (calculateWinner(squares) || squares[i]) {
+    if (calculateWinner(copiedSquares) || copiedSquares[i]) {
       return;
     }
     // 盤面にマークをセット
-    squares[i] = xIsNext ? 'X' : 'O';
+    copiedSquares[i] = xIsNext ? 'X' : 'O';
 
     const position = e.currentTarget.name as LocationIndex;
 
@@ -87,7 +74,7 @@ const Game = () => {
     setHistory(
       newHistory.concat([
         {
-          squares,
+          squares: copiedSquares,
           position: LocationMap.get(position),
         },
       ])
@@ -108,15 +95,7 @@ const Game = () => {
 
   return (
     <View>
-      <Board
-        squares={current.squares}
-        onClick={handleClick({
-          history,
-          setHistory,
-          setStepNumber,
-          setXIsNext,
-        })}
-      />
+      <Board squares={current.squares} onClick={handleClick} />
       <GameInfo>
         <GameInfo>{getStatus()}</GameInfo>
         <History history={history} current={stepNumber} onClick={jumpTo} />
