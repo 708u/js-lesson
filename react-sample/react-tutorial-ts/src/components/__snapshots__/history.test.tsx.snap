@@ -17,7 +17,7 @@ exports[`history component test should be same as a previous snapshot. 1`] = `
       className=""
       onClick={[Function]}
     >
-      Go to move #1
+      Go to move #1. [row: 1, col: 1]
     </button>
   </li>
   <li>
@@ -25,7 +25,7 @@ exports[`history component test should be same as a previous snapshot. 1`] = `
       className=""
       onClick={[Function]}
     >
-      Go to move #2
+      Go to move #2. [row: 1, col: 2]
     </button>
   </li>
 </ol>
@@ -48,7 +48,7 @@ exports[`history component test should be same as a previous snapshot. 2`] = `
       className=""
       onClick={[Function]}
     >
-      Go to move #1
+      Go to move #1. [row: 1, col: 1]
     </button>
   </li>
   <li>
@@ -56,7 +56,7 @@ exports[`history component test should be same as a previous snapshot. 2`] = `
       className="btn-bold"
       onClick={[Function]}
     >
-      Go to move #2
+      Go to move #2. [row: 1, col: 2]
     </button>
   </li>
 </ol>

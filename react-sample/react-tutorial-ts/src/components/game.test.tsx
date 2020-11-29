@@ -17,33 +17,37 @@ describe('game component test', () => {
   it('should progress normal scenario', () => {
       render(<Game />);
 
+      const playerXMsg = 'Next player: X';
+      const playerOMsg = 'Next player: O';
       // first requirements.
       screen.getByText('Go to game start');
-      screen.getByText('Next player: X');
-      expect(screen.queryByText('Next player: O')).toBeNull();
+      screen.getByText(playerXMsg);
+      expect(screen.queryByText(playerOMsg)).toBeNull();
 
       // progress first turn.
       fireEvent.click(screen.getByTestId('btn-0'));
       // reverse next player
-      screen.getByText('Next player: O');
-      expect(screen.queryByText('Next player: X')).toBeNull();
+      screen.getByText(playerOMsg);
+      expect(screen.queryByText(playerXMsg)).toBeNull();
       // Go to this turn button was appeared.
-      screen.getByText('Go to move #1');
+      const expectedFirstHistoryStr = 'Go to move #1. [row: 1, col: 1]';
+      screen.getByText(expectedFirstHistoryStr);
 
       // progress second turn.
       fireEvent.click(screen.getByTestId('btn-1'));
       // reverse next player
-      screen.getByText('Next player: X');
-      expect(screen.queryByText('Next player: O')).toBeNull();
+      screen.getByText(playerXMsg);
+      expect(screen.queryByText(playerOMsg)).toBeNull();
       // Go to this turn button was appeared.
-      screen.getByText('Go to move #2');
+      const expectedSecondHistoryStr = 'Go to move #2. [row: 1, col: 2]';
+      screen.getByText(expectedSecondHistoryStr);
 
       // time travel to first turn
-      fireEvent.click(screen.getByText('Go to move #1'));
-      screen.getByText('Next player: O');
-      expect(screen.queryByText('Next player: X')).toBeNull();
+      fireEvent.click(screen.getByText(expectedFirstHistoryStr));
+      screen.getByText(playerOMsg);
+      expect(screen.queryByText(playerXMsg)).toBeNull();
       // can go to current turn
-      screen.getByText('Go to move #2');
+      screen.getByText(expectedSecondHistoryStr);
       // button 1 value is gone.
       expect(screen.getByTestId('btn-1')).toBeEmptyDOMElement();
   });

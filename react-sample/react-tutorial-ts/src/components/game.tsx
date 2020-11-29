@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Board, { board } from 'components/board';
+import React, { useState, MouseEvent } from 'react';
+import Board, { board, LocationMap, LocationIndex } from 'components/board';
 import { mark } from 'components/square';
 import History, { history, squares } from 'components/history';
 import styled from 'styled-components';
@@ -57,7 +57,7 @@ const Game = () => {
       setHistory: any,
       setStepNumber: any,
       setXIsNext: any
-    }) => (i: number) => {
+    }) => (i: number) => (e: MouseEvent<HTMLButtonElement>) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
     const newHistory = history.slice(0, stepNumber + 1);
@@ -75,10 +75,13 @@ const Game = () => {
     // 盤面にマークをセット
     squares[i] = xIsNext ? 'X' : 'O';
 
+    const position = e.currentTarget.name as LocationIndex;
+
     // state更新
     setHistory(newHistory.concat([{
-        squares: squares,
-      }]));
+      squares: squares,
+      position: LocationMap.get(position)
+    }]));
     setStepNumber(newHistory.length);
     setXIsNext(! xIsNext);
   };

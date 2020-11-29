@@ -2,8 +2,14 @@ import React, { FC } from 'react';
 import { board } from 'components/board';
 import styled from 'styled-components';
 
+export type Position = {
+  col: number,
+  row: number,
+};
+
 export type squares = {
-  squares: board
+  squares: board,
+  position?: Position
 };
 
 export type history = squares[];
@@ -23,10 +29,10 @@ const History: FC<Props> = (props) => {
 
   return (
     <HistoryList>
-      {history.map((_, move) => {
+      {history.map((history, move) => {
         return <li key={move}>
           <button onClick={onClick(move)} className={current === move ? 'btn-bold' : ''}>
-            {move ? 'Go to move #' + move : 'Go to game start'}
+            {move ? `Go to move #${move}. [row: ${history.position?.row}, col: ${history.position?.col}]` : 'Go to game start'}
           </button>
         </li>
       })}

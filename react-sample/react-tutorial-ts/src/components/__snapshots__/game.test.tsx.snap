@@ -11,16 +11,19 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
       <button
         className="sc-bdfBwQ iZlURE"
         data-testid="btn-0"
+        name="1-1"
         onClick={[Function]}
       />
       <button
         className="sc-bdfBwQ iZlURE"
         data-testid="btn-1"
+        name="1-2"
         onClick={[Function]}
       />
       <button
         className="sc-bdfBwQ iZlURE"
         data-testid="btn-2"
+        name="1-3"
         onClick={[Function]}
       />
     </div>
@@ -30,16 +33,19 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
       <button
         className="sc-bdfBwQ iZlURE"
         data-testid="btn-3"
+        name="2-1"
         onClick={[Function]}
       />
       <button
         className="sc-bdfBwQ iZlURE"
         data-testid="btn-4"
+        name="2-2"
         onClick={[Function]}
       />
       <button
         className="sc-bdfBwQ iZlURE"
         data-testid="btn-5"
+        name="2-3"
         onClick={[Function]}
       />
     </div>
@@ -49,16 +55,19 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
       <button
         className="sc-bdfBwQ iZlURE"
         data-testid="btn-6"
+        name="3-1"
         onClick={[Function]}
       />
       <button
         className="sc-bdfBwQ iZlURE"
         data-testid="btn-7"
+        name="3-2"
         onClick={[Function]}
       />
       <button
         className="sc-bdfBwQ iZlURE"
         data-testid="btn-8"
+        name="3-3"
         onClick={[Function]}
       />
     </div>

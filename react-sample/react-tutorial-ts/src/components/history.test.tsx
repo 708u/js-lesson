@@ -6,8 +6,8 @@ describe('history component test', () => {
   it('should be same as a previous snapshot.', () => {
     const history: history = [
       { squares: [null, null, null, null, null, null, null, null, null] },
-      { squares: ['O', null, null, null, null, null, null, null, null] },
-      { squares: ['O', 'X', null, null, null, null, null, null, null] },
+      { squares: ['O', null, null, null, null, null, null, null, null], position: { row:1, col: 1 }  },
+      { squares: ['O', 'X', null, null, null, null, null, null, null], position: { row:1, col: 2 } },
     ];
     const component = renderer.create(
       <History
@@ -23,7 +23,7 @@ describe('history component test', () => {
       <History
         history={history}
         current={2}
-        onClick={() =>  () => true}
+        onClick={() => () => true}
       />
     )
 
