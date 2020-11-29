@@ -1,7 +1,7 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import Board from 'components/board';
-import { mark } from './square';
+import { mark } from 'components/square';
 
 describe('testing board components', () => {
   it('should be same as a previous snapshot.', () => {

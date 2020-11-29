@@ -8,6 +8,7 @@ exports[`history component test should be same as a previous snapshot. 1`] = `
     <button
       className="btn-bold"
       onClick={[Function]}
+      type="button"
     >
       Go to game start
     </button>
@@ -16,6 +17,7 @@ exports[`history component test should be same as a previous snapshot. 1`] = `
     <button
       className=""
       onClick={[Function]}
+      type="button"
     >
       Go to move #1. [row: 1, col: 1]
     </button>
@@ -24,6 +26,7 @@ exports[`history component test should be same as a previous snapshot. 1`] = `
     <button
       className=""
       onClick={[Function]}
+      type="button"
     >
       Go to move #2. [row: 1, col: 2]
     </button>
@@ -39,6 +42,7 @@ exports[`history component test should be same as a previous snapshot. 2`] = `
     <button
       className=""
       onClick={[Function]}
+      type="button"
     >
       Go to game start
     </button>
@@ -47,6 +51,7 @@ exports[`history component test should be same as a previous snapshot. 2`] = `
     <button
       className=""
       onClick={[Function]}
+      type="button"
     >
       Go to move #1. [row: 1, col: 1]
     </button>
@@ -55,6 +60,7 @@ exports[`history component test should be same as a previous snapshot. 2`] = `
     <button
       className="btn-bold"
       onClick={[Function]}
+      type="button"
     >
       Go to move #2. [row: 1, col: 2]
     </button>

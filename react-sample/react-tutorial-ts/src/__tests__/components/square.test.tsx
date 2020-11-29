@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import Square, { SquareBtn } from './square';
+import Square, { SquareBtn } from 'components/square';
 
 describe('square test', () => {
   it('should render as expected components', () => {

@@ -87,6 +87,7 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
         <button
           className="btn-bold"
           onClick={[Function]}
+          type="button"
         >
           Go to game start
         </button>

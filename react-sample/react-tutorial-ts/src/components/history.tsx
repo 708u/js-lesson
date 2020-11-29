@@ -32,6 +32,7 @@ const History: FC<Props> = (props) => {
       {history.map((history, move) => (
         <li key={move}>
           <button
+            type="button"
             onClick={onClick(move)}
             className={current === move ? 'btn-bold' : ''}
           >
