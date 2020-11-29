@@ -8,7 +8,6 @@
     "airbnb",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
@@ -42,6 +41,10 @@
         "extensions": [".jsx", ".tsx"]
       }
     ],
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": true,
+      "optionalDependencies": false
+    }],
     "react/prop-types": "off",
     "quotes": ["warn", "single"],
     "prettier/prettier": ["error", { "singleQuote": true }],
