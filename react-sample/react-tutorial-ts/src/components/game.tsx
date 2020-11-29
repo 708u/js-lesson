@@ -42,20 +42,16 @@ const Game: FC = () => {
       // 0, 1, 2
       const [a, b, c] = gameIsOverPatterns[i];
       // X, null, X
-      if (
-        squares[a] &&
-        squares[a] === squares[b] &&
-        squares[a] === squares[c]
-      ) {
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a]; // 勝利したマークを返却する
       }
     }
     return null; // 勝負が終わってなければnull
   };
 
-  const handleClick = ({ history }: { history: Array<squares> }) => (
-    i: number
-  ) => (e: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = ({ history }: { history: Array<squares> }) => (i: number) => (
+    e: MouseEvent<HTMLButtonElement>
+  ) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
     const newHistory = history.slice(0, stepNumber + 1);

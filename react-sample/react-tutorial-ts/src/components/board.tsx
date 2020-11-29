@@ -10,23 +10,14 @@ type Props = {
   onClick: (n: number) => (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
-type LocationIndex =
-  | '1-1'
-  | '1-2'
-  | '1-3'
-  | '2-1'
-  | '2-2'
-  | '2-3'
-  | '3-1'
-  | '3-2'
-  | '3-3';
+type LocationIndex = '1-1' | '1-2' | '1-3' | '2-1' | '2-2' | '2-3' | '3-1' | '3-2' | '3-3';
 
 const LocationMap: Map<
-LocationIndex,
-{
-  row: number;
-  col: number;
-}
+  LocationIndex,
+  {
+    row: number;
+    col: number;
+  }
 > = new Map([
   ['1-1', { row: 1, col: 1 }],
   ['1-2', { row: 1, col: 2 }],
@@ -103,12 +94,7 @@ const Board: FC<Props> = (props: Props) => {
       {boardNumbers.map((row) => (
         <BoardRaw>
           {row.map((value) => (
-            <Square
-              name={value.location}
-              testId={value.id}
-              value={squares[value.id]}
-              onClick={onClick(value.id)}
-            />
+            <Square name={value.location} testId={value.id} value={squares[value.id]} onClick={onClick(value.id)} />
           ))}
         </BoardRaw>
       ))}

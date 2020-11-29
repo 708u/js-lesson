@@ -9,9 +9,7 @@ describe('testing board components', () => {
 
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const onClick = (i: number) => (e: MouseEvent<HTMLButtonElement>) => true;
-    const component = renderer.create(
-      <Board squares={squares} onClick={onClick} />
-    );
+    const component = renderer.create(<Board squares={squares} onClick={onClick} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

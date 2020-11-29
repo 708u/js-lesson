@@ -31,14 +31,8 @@ const History: FC<Props> = (props) => {
     <HistoryList>
       {history.map((h, move) => (
         <li key={move}>
-          <button
-            type="button"
-            onClick={onClick(move)}
-            className={current === move ? 'btn-bold' : ''}
-          >
-            {move
-              ? `Go to move #${move}. [row: ${h.position?.row}, col: ${h.position?.col}]`
-              : 'Go to game start'}
+          <button type="button" onClick={onClick(move)} className={current === move ? 'btn-bold' : ''}>
+            {move ? `Go to move #${move}. [row: ${h.position?.row}, col: ${h.position?.col}]` : 'Go to game start'}
           </button>
         </li>
       ))}

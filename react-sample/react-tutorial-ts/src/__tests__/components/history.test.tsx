@@ -15,15 +15,11 @@ describe('history component test', () => {
         position: { row: 1, col: 2 },
       },
     ];
-    const component = renderer.create(
-      <History history={history} current={0} onClick={() => () => true} />
-    );
+    const component = renderer.create(<History history={history} current={0} onClick={() => () => true} />);
     expect(component.toJSON()).toMatchSnapshot();
 
     // determine if current has applied.
-    const secondComponent = renderer.create(
-      <History history={history} current={2} onClick={() => () => true} />
-    );
+    const secondComponent = renderer.create(<History history={history} current={2} onClick={() => () => true} />);
 
     expect(secondComponent.toJSON()).toMatchSnapshot();
   });
