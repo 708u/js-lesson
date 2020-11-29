@@ -1,4 +1,5 @@
 import React, { FC, MouseEvent } from 'react';
+import { v4 as uuidV4 } from 'uuid';
 import Square, { mark } from 'components/square';
 import styled from 'styled-components';
 import 'index.css';
@@ -92,11 +93,11 @@ const Board: FC<Props> = (props: Props) => {
   return (
     <div>
       {boardNumbers.map((row) => (
-        <BoardRaw>
+        <BoardRaw key={`board-row-${uuidV4()}`}>
           {row.map((value) => (
             <Square
+              key={`square-btn-${uuidV4()}`}
               name={value.location}
-              key={value.id}
               testId={value.id}
               value={squares[value.id]}
               onClick={onClick(value.id)}

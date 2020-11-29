@@ -81,7 +81,7 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
       Next player: X
     </div>
     <ol
-      className="sc-iBPRYJ cRaMVD"
+      className="sc-eCssSg UPgMP"
     >
       <li>
         <button
