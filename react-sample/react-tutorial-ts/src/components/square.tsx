@@ -26,12 +26,14 @@ type Props = {
 }
 
 const Square: FC<Props> = (props) => {
-  const { onClick, name, value, testId } = props;
+  const {
+    onClick, name, value, testId,
+  } = props;
   return (
-    <SquareBtn name={name} data-testid={`btn-${testId}`} onClick={ onClick }>
+    <SquareBtn name={name} data-testid={`btn-${testId}`} onClick={onClick}>
       { value }
-    </ SquareBtn>
+    </SquareBtn>
   );
-}
+};
 
 export default Square;

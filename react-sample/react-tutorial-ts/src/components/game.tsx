@@ -11,11 +11,11 @@ const Game = () => {
     display: flex;
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 20px;
-  `
+  `;
 
   const GameInfo = styled.div`
     margin-left: 20px;
-  `
+  `;
 
   const [history, setHistory] = useState<history>([{
     squares: Array(9).fill(null),
@@ -41,7 +41,7 @@ const Game = () => {
       const [a, b, c] = gameIsOverPatterns[i];
       // X, null, X
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a]; // 勝利したマークを返却する
+        return squares[a]; // 勝利したマークを返却する
       }
     }
     return null; // 勝負が終わってなければnull
@@ -51,13 +51,13 @@ const Game = () => {
     history,
     setHistory,
     setStepNumber,
-    setXIsNext
+    setXIsNext,
   }: {
-      history: Array<squares>
-      setHistory: any,
-      setStepNumber: any,
-      setXIsNext: any
-    }) => (i: number) => (e: MouseEvent<HTMLButtonElement>) => {
+    history: Array<squares>
+    setHistory: any,
+    setStepNumber: any,
+    setXIsNext: any
+  }) => (i: number) => (e: MouseEvent<HTMLButtonElement>) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
     const newHistory = history.slice(0, stepNumber + 1);
@@ -79,35 +79,37 @@ const Game = () => {
 
     // state更新
     setHistory(newHistory.concat([{
-      squares: squares,
-      position: LocationMap.get(position)
+      squares,
+      position: LocationMap.get(position),
     }]));
     setStepNumber(newHistory.length);
-    setXIsNext(! xIsNext);
+    setXIsNext(!xIsNext);
   };
 
   const jumpTo = (step: number) => () => {
     setStepNumber(step);
     setXIsNext((step % 2) === 0);
-  }
+  };
 
   const getStatus = () => {
     const winner = calculateWinner(current.squares);
-    return winner ? 'Winner: ' + winner : 'Next player: ' + (xIsNext ? 'X' : 'O');
-  }
+    return winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
+  };
 
   return (
     <View>
       <Board
         squares={current.squares}
-        onClick={handleClick({ history, setHistory, setStepNumber, setXIsNext })}
+        onClick={handleClick({
+          history, setHistory, setStepNumber, setXIsNext,
+        })}
       />
       <GameInfo>
         <GameInfo>{getStatus()}</GameInfo>
-        <History history={history} current={stepNumber} onClick={jumpTo}/>
+        <History history={history} current={stepNumber} onClick={jumpTo} />
       </GameInfo>
     </View>
   );
-}
+};
 
 export default Game;

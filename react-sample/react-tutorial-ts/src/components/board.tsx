@@ -13,18 +13,18 @@ type props = {
 type LocationIndex = '1-1' | '1-2' | '1-3' | '2-1' | '2-2' | '2-3' | '3-1' | '3-2' | '3-3';
 
 const LocationMap: Map<LocationIndex, {
-    row: number;
-    col: number;
+  row: number;
+  col: number;
 }> = new Map([
-  ['1-1', {row: 1, col: 1}],
-  ['1-2', {row: 1, col: 2}],
-  ['1-3', {row: 1, col: 3}],
-  ['2-1', {row: 2, col: 1}],
-  ['2-2', {row: 2, col: 2}],
-  ['2-3', {row: 2, col: 3}],
-  ['3-1', {row: 3, col: 1}],
-  ['3-2', {row: 3, col: 2}],
-  ['3-3', {row: 3, col: 3}],
+  ['1-1', { row: 1, col: 1 }],
+  ['1-2', { row: 1, col: 2 }],
+  ['1-3', { row: 1, col: 3 }],
+  ['2-1', { row: 2, col: 1 }],
+  ['2-2', { row: 2, col: 2 }],
+  ['2-3', { row: 2, col: 3 }],
+  ['3-1', { row: 3, col: 1 }],
+  ['3-2', { row: 3, col: 2 }],
+  ['3-3', { row: 3, col: 3 }],
 ]);
 
 const Board = (props: props) => {
@@ -34,7 +34,7 @@ const Board = (props: props) => {
     content: "";
     display: table;
   }
-`
+`;
 
   const { squares, onClick } = props;
 
@@ -54,7 +54,7 @@ const Board = (props: props) => {
       {
         location: '1-3',
         id: 2,
-      }
+      },
     ],
     [
       {
@@ -88,23 +88,21 @@ const Board = (props: props) => {
 
   return (
     <div>
-      {boardNumbers.map((row) => {
-        return <BoardRaw>
-          {row.map((value) => {
-            return <Square name={value.location} testId={value.id} value={squares[value.id]} onClick={onClick(value.id)}/>
-          })}
+      {boardNumbers.map((row, index) => (
+        <BoardRaw>
+          {row.map((value) => <Square name={value.location} testId={value.id} value={squares[value.id]} onClick={onClick(value.id)} />)}
         </BoardRaw>
-      })}
+      ))}
     </div>
   );
-}
+};
 
 export type {
   LocationIndex,
-}
+};
 
 export {
-  LocationMap
-}
+  LocationMap,
+};
 
 export default Board;
