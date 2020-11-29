@@ -3,13 +3,13 @@ import { board } from 'components/board';
 import styled from 'styled-components';
 
 export type Position = {
-  col: number,
-  row: number,
+  col: number;
+  row: number;
 };
 
 export type squares = {
-  squares: board,
-  position?: Position
+  squares: board;
+  position?: Position;
 };
 
 export type history = squares[];
@@ -22,8 +22,8 @@ type Props = {
 
 const History: FC<Props> = (props) => {
   const HistoryList = styled.ol`
-  padding-left: 30px;
-`;
+    padding-left: 30px;
+  `;
 
   const { history, onClick, current } = props;
 
@@ -31,8 +31,13 @@ const History: FC<Props> = (props) => {
     <HistoryList>
       {history.map((history, move) => (
         <li key={move}>
-          <button onClick={onClick(move)} className={current === move ? 'btn-bold' : ''}>
-            {move ? `Go to move #${move}. [row: ${history.position?.row}, col: ${history.position?.col}]` : 'Go to game start'}
+          <button
+            onClick={onClick(move)}
+            className={current === move ? 'btn-bold' : ''}
+          >
+            {move
+              ? `Go to move #${move}. [row: ${history.position?.row}, col: ${history.position?.col}]`
+              : 'Go to game start'}
           </button>
         </li>
       ))}

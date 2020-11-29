@@ -5,13 +5,11 @@ import { mark } from './square';
 
 describe('testing board components', () => {
   it('should be same as a previous snapshot.', () => {
-    const squares: mark[] = [
-      'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O',
-    ];
+    const squares: mark[] = ['O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O'];
 
-    const onClick = (i: number): void => { };
+    const onClick = (i: number): void => {};
     const component = renderer.create(
-      <Board squares={squares} onClick={onClick} />,
+      <Board squares={squares} onClick={onClick} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

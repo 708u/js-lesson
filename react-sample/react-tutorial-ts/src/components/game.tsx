@@ -9,7 +9,7 @@ const Game = () => {
   const View = styled.div`
     flex-direction: row;
     display: flex;
-    font: 14px "Century Gothic", Futura, sans-serif;
+    font: 14px 'Century Gothic', Futura, sans-serif;
     margin: 20px;
   `;
 
@@ -17,9 +17,11 @@ const Game = () => {
     margin-left: 20px;
   `;
 
-  const [history, setHistory] = useState<history>([{
-    squares: Array(9).fill(null),
-  }]);
+  const [history, setHistory] = useState<history>([
+    {
+      squares: Array(9).fill(null),
+    },
+  ]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXIsNext] = useState(true);
   const current = history[stepNumber];
@@ -40,7 +42,11 @@ const Game = () => {
       // 0, 1, 2
       const [a, b, c] = gameIsOverPatterns[i];
       // X, null, X
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      if (
+        squares[a] &&
+        squares[a] === squares[b] &&
+        squares[a] === squares[c]
+      ) {
         return squares[a]; // 勝利したマークを返却する
       }
     }
@@ -53,10 +59,10 @@ const Game = () => {
     setStepNumber,
     setXIsNext,
   }: {
-    history: Array<squares>
-    setHistory: any,
-    setStepNumber: any,
-    setXIsNext: any
+    history: Array<squares>;
+    setHistory: any;
+    setStepNumber: any;
+    setXIsNext: any;
   }) => (i: number) => (e: MouseEvent<HTMLButtonElement>) => {
     // すべての盤面履歴取得
     // history = [{hist1}, {hist2}]
@@ -78,17 +84,21 @@ const Game = () => {
     const position = e.currentTarget.name as LocationIndex;
 
     // state更新
-    setHistory(newHistory.concat([{
-      squares,
-      position: LocationMap.get(position),
-    }]));
+    setHistory(
+      newHistory.concat([
+        {
+          squares,
+          position: LocationMap.get(position),
+        },
+      ])
+    );
     setStepNumber(newHistory.length);
     setXIsNext(!xIsNext);
   };
 
   const jumpTo = (step: number) => () => {
     setStepNumber(step);
-    setXIsNext((step % 2) === 0);
+    setXIsNext(step % 2 === 0);
   };
 
   const getStatus = () => {
@@ -101,7 +111,10 @@ const Game = () => {
       <Board
         squares={current.squares}
         onClick={handleClick({
-          history, setHistory, setStepNumber, setXIsNext,
+          history,
+          setHistory,
+          setStepNumber,
+          setXIsNext,
         })}
       />
       <GameInfo>

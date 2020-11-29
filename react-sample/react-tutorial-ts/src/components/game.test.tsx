@@ -1,17 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {
-  render, cleanup, screen, fireEvent,
-} from '@testing-library/react';
+import { render, cleanup, screen, fireEvent } from '@testing-library/react';
 import Game from 'components/game';
 
 afterEach(cleanup);
 
 describe('game component test', () => {
   it('should be same as a previous snapshot.', () => {
-    const component = renderer.create(
-      <Game />,
-    );
+    const component = renderer.create(<Game />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -56,14 +52,8 @@ describe('game component test', () => {
 
   it('should win the X player', () => {
     render(<Game />);
-    const clicks = [
-      'btn-0',
-      'btn-7',
-      'btn-1',
-      'btn-8',
-      'btn-2',
-    ];
-      // progress first turn.
+    const clicks = ['btn-0', 'btn-7', 'btn-1', 'btn-8', 'btn-2'];
+    // progress first turn.
     clicks.forEach((click) => fireEvent.click(screen.getByTestId(click)));
 
     // Winner comment was appeared.
