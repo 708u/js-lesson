@@ -94,7 +94,13 @@ const Board: FC<Props> = (props: Props) => {
       {boardNumbers.map((row) => (
         <BoardRaw>
           {row.map((value) => (
-            <Square name={value.location} testId={value.id} value={squares[value.id]} onClick={onClick(value.id)} />
+            <Square
+              name={value.location}
+              key={value.id}
+              testId={value.id}
+              value={squares[value.id]}
+              onClick={onClick(value.id)}
+            />
           ))}
         </BoardRaw>
       ))}
